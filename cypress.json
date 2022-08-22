@@ -1,0 +1,5 @@
+{
+  "integrationFolder": "test/e2e",
+  "chromeWebSecurity": false,
+  "baseUrl": "http://localhost:3100"
+}
