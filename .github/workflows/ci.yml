@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  test:unit:
+  test_unit:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Test
         run: nr test:unit
-  test:e2e:
+  test_e2e:
     runs-on: ${{ matrix.os }}
 
     strategy:
