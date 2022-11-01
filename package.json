@@ -1,6 +1,6 @@
 {
   "name": "@fgsreally/vanime",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "build": "tsup ",
@@ -9,7 +9,7 @@
     "example:dev": "npm -C examples/project run dev",
     "lint": "eslint .",
     "test": "vitest",
-    "test:update": "vitest --u",
+    "test:unit": "vitest --u",
     "test:e2e": "cypress open"
   },
   "main": "dist/index.js",
@@ -18,21 +18,38 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/",
+      "require": "./dist/"
+    },
+    "./plugin": {
+      "import": "./dist/plugin.mjs",
+      "require": "./dist/plugin.js",
+      "types":"./dist/plugin.d.ts"
+    }
+  },
   "dependencies": {
-    "@types/animejs": "^3.1.4",
     "animejs": "^3.2.1",
-    "vue": "^3.2.25"
+    "magic-string": "^0.26.7",
+    "vue": "^3.2.25",
+    "@vue/compiler-dom": "^3.2.41"
   },
   "peerDependencies ": {
     "vue-router": "^4.0.1"
   },
   "devDependencies": {
-    "tsup": "^6.1.2",
-    "@cypress/vite-dev-server": "^3.0.0",
+    "@cypress/vite-dev-server": "^3.0.0", 
+    "@types/animejs": "^3.1.4",
     "@cypress/vue": "^3.1.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "cypress": "8.2.0",
     "happy-dom": "^5.2.0",
+    "tsup": "^6.1.2",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
     "vitest": "^0.14.2",
